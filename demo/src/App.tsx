@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { ReactNode } from "react";
+import MyName from './Components/first_com'
+import Tianqi from './Components/Tianqi'
+import MyButton from "./Components/Mybutton";
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends React.Component<any, any> {
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      inputValue: '',
+      childVal: '',
+      name: 'tianchao',
+      hits: '',
+      count: 0
+    }
+  }
+  getData = (e: string) => {
+    this.setState({ childVal: e })
+  }
+  clicked = () => {
+    this.setState({ count: this.state.count + 2 })
+  }
+  changeInputValue = (e: any) => {
+    this.setState({ inputValue: e.target.value })
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  }
+  render(): ReactNode {
+    return (
+      <>
+        <h1>hello</h1>
+        <Tianqi />
+        <hr />
+        <MyName
+          names={this.state.name}
+          hits={this.state.inputValue}
+          tofather={this.getData}
+        />
+        <hr />
+        <p>father</p>
+        <div className="card">
+          <button onClick={this.clicked}>
+            count is {this.state.count}
+          </button>
+          <p>{this.state.inputValue}</p>
+          <input onChange={this.changeInputValue} />
+          <p>from child value :{this.state.childVal}</p>
+        </div>
+
+        <hr />
+        <MyButton ButtonClick={this.clicked} ButtoTtitle="appClick" />
+      </>
+    )
+  }
 }
 
 export default App
