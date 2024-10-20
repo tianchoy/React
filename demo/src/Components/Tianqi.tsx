@@ -39,13 +39,13 @@ class Tianqi extends React.Component<any,any> {
 
     getPosition = async ()=>{
         await axios.get('http://www.nmc.cn/rest/position')
-        .then((res) =>{
+        .then((res:any) =>{
             console.log(res.data);
             this.setState({tianqiList: res.data})
              return axios.get('http://www.nmc.cn/rest/weather?stationid='+res.data.code)
             
         })
-        .then(res=>{
+        .then((res:any)=>{
             console.log(res.data.data);
             this.setState({list: res.data.data.air })
         })
