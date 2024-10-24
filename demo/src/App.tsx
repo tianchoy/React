@@ -45,7 +45,6 @@ class App extends React.Component<any, any> {
           <input onChange={this.changeInputValue} />
           <p>from child value :{this.state.childVal}</p>
         </div>
-
         <hr />
         <MyButton ButtonClick={this.clicked} ButtoTtitle="appClick" />
       </>
