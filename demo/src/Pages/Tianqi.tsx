@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Style from '../assets/tianqi.module.css'
-import MyButton from "./Mybutton";
-import Clock from "./Clock";
+import MyButton from "../Components/Mybutton";
+import Clock from "../Components/Clock";
 
 interface wea {
     date: string,

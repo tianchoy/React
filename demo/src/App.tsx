@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import MyName from './Components/first_com'
-import Tianqi from './Components/Tianqi'
+import Tianqi from '../src/Pages/TianQi'
 import MyButton from "./Components/Mybutton";
 
 class App extends React.Component<any, any> {
