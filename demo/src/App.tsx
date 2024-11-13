@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import MyName from './Components/first_com'
-import Tianqi from '../src/Pages/TianQi'
 import MyButton from "./Components/Mybutton";
 
 class App extends React.Component<any, any> {
@@ -28,7 +27,6 @@ class App extends React.Component<any, any> {
     return (
       <>
         <h1>hello</h1>
-        <Tianqi />
         <hr />
         <MyName
           names={this.state.name}
