@@ -1,17 +1,16 @@
 import React from "react";
 import MyButton from "../Components/Mybutton";
 import Clock from "../Components/Clock";
-import {getCity,getWeather} from "../Api/Index"
+import {getCity,getWeather} from '../Api/Index'
+import MyInput from "../Components/MyInput.tsx";
 
 class Tianqi extends React.Component<any,any> {
 
     constructor(props: any) {
         super(props)
         this.state = {
-            cityCode:'',
-            tianqiList: [],
-            list: [],
-            detail:[]
+            cityInfo:'',
+            weatherInfos:'',
         }
     }
 
@@ -29,11 +28,15 @@ class Tianqi extends React.Component<any,any> {
 
     getPosition = async ()=>{
         const  res:any = await getCity()
-        console.log(res)
-        this.setState({cityCode:res.code})
+        this.setState({cityInfo:res})
 
         const weatherInfo:any = await getWeather(res.code)
-        console.log(weatherInfo)
+        console.log(weatherInfo.data)
+        this.setState({weatherInfos:weatherInfo.data.real.weather})
+    }
+
+    handleChange=(e:any)=>{
+        console.log(e.target.value)
     }
 
 
@@ -46,8 +49,14 @@ class Tianqi extends React.Component<any,any> {
         return (
             <>
                 <h3>天气情况</h3>
-                <h4>当前城市：{this.state.tianqiList.province}{this.state.tianqiList.city},< Clock/>,更新时间：{this.state.list.forecasttime}</h4>
-                <MyButton ButtonClick = { this.btClick} ButtoTtitle="tqClick"/>
+                <h4>当前城市：{this.state.cityInfo.province}{this.state.cityInfo.city},< Clock/></h4>
+                <h5>
+                    当前天气:{this.state.weatherInfos.info},
+                    当前温度:{this.state.weatherInfos.temperature},
+                    相对湿度:{this.state.weatherInfos.humidity},
+                </h5>
+                <MyInput placeholder={'请输入要查询的城市'} inputChangeValue={this.handleChange} />
+                <MyButton ButtonClick = { this.btClick} ButtoTtitle="天气"/>
             </>
         )
     }

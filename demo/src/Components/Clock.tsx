@@ -1,7 +1,7 @@
 import React,{  ReactNode } from "react";
 
 class Clock extends React.Component<any,any>{
-    timerID: number | undefined;
+    timerID: object | any;
     constructor(props:any){
         super(props);
         this.state={
