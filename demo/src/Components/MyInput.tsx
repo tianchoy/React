@@ -1,9 +1,18 @@
 import {Component} from "react";
+import {Input} from "antd";
 
-class MyInput extends Component<any, any>{
+interface MyInputProps{
+    value:string,
+    inputChangeValue:(e:any)=>void,
+    placeholder:string,
+    disabled:boolean,
+}
+
+class MyInput extends Component<MyInputProps>{
     render() {
         return (
-            <input
+            <Input
+            disabled={this.props.disabled}
             type="text"
             value={this.props.value}
             onChange={this.props.inputChangeValue}

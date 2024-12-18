@@ -1,15 +1,13 @@
-import instance from "./Api.tsx";
+import request from "./Api.tsx";
+
+import { config } from "./Config.tsx";
 
  export const getCity = ()=>{
-    return instance({
-        url:'position'
-    })
+    return request.get(config.position)
 }
 
  export const getWeather = (code:string)=>{
-    return instance({
-        url:'weather?stationid='+ code
-    })
+    return request.get(config.getWeather+code)
 }
 
 export default {

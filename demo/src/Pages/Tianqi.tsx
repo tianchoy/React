@@ -1,7 +1,7 @@
 import React from "react";
 import MyButton from "../Components/Mybutton";
 import Clock from "../Components/Clock";
-import {getCity,getWeather} from '../Api/Index'
+import {getCity,getWeather} from "../Api/Index.tsx";
 import MyInput from "../Components/MyInput.tsx";
 
 class Tianqi extends React.Component<any,any> {
@@ -31,7 +31,6 @@ class Tianqi extends React.Component<any,any> {
         this.setState({cityInfo:res})
 
         const weatherInfo:any = await getWeather(res.code)
-        console.log(weatherInfo.data)
         this.setState({weatherInfos:weatherInfo.data.real.weather})
     }
 
@@ -43,7 +42,8 @@ class Tianqi extends React.Component<any,any> {
 
     componentDidMount(): void {
         // this.getTianqi()
-        this.getPosition()
+
+        this.getPosition();
     }
     render(): React.ReactNode {
         return (
@@ -55,8 +55,8 @@ class Tianqi extends React.Component<any,any> {
                     当前温度:{this.state.weatherInfos.temperature},
                     相对湿度:{this.state.weatherInfos.humidity},
                 </h5>
-                <MyInput placeholder={'请输入要查询的城市'} inputChangeValue={this.handleChange} />
-                <MyButton ButtonClick = { this.btClick} ButtoTtitle="天气"/>
+                <MyInput disabled={false} placeholder={'请输入要查询的城市'} value={''} inputChangeValue={this.handleChange} />
+                <MyButton types={"primary"} BtnClick = { this.btClick} BtnTtitle="天气"/>
             </>
         )
     }

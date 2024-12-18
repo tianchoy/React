@@ -1,23 +1,26 @@
-// import { Component, ReactNode } from "react";
+import React, { ReactNode } from "react";
+import { Button } from "antd";
 
-// class MyButton extends Component<any>{
-//     render(): ReactNode {
-//         return(
-//             <>
-//                 <button onClick={this.props.ButtonClick}> {this.props.ButtoTtitle}</button>
-//             </>
-//         )
-//     }
-// }
-
-// export default MyButton
-
-const MyButton = (props:any) => {
-    return (
-        <>
-            <button onClick={props.ButtonClick}> {props.ButtoTtitle}</button>
-        </>
-    )
+interface myBtnProps {
+    BtnClick: () => void;
+    BtnTtitle: string;
+    btnDisabled?: boolean;
+    types?: "link" | "text" | "default" | "primary" | "dashed" ;
 }
 
+class MyButton extends React.Component<myBtnProps> {
+    render(): ReactNode {
+        return (
+            <>
+                <Button
+                    disabled={this.props.btnDisabled}
+                    onClick={this.props.BtnClick}
+                    type={this.props.types}
+                >
+                    {this.props.BtnTtitle}
+                </Button>
+            </>
+        )
+    }
+}
 export default MyButton
