@@ -1,6 +1,11 @@
 import React, { ReactNode } from "react";
 import MyButton from "./Mybutton";
-class MyName extends React.Component<{ names: string, hits: string, tofather: Function }, { data: string }> {
+interface FirProps {
+    names: string,
+    hits: string,
+    tofather: Function
+}
+class MyName extends React.Component<FirProps> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -19,7 +24,7 @@ class MyName extends React.Component<{ names: string, hits: string, tofather: Fu
                 <h2>this is child</h2>
                 <div>{this.props.names}-{this.props.hits}</div>
                 <input type="text" onChange={this.getInput} />
-                <MyButton ButtonClick={this.sendFather} ButtoTtitle="toFather" />
+                <MyButton BtnClick={this.sendFather} BtnTtitle="toFather" />
             </>
         )
     }

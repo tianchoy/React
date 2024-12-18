@@ -5,7 +5,7 @@ interface myBtnProps {
     BtnClick: () => void;
     BtnTtitle: string;
     btnDisabled?: boolean;
-    types?: "link" | "text" | "default" | "primary" | "dashed" ;
+    types?: "link" | "text" | "default" | "primary" | "dashed";
 }
 
 class MyButton extends React.Component<myBtnProps> {

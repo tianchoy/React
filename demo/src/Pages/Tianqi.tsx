@@ -1,22 +1,22 @@
 import React from "react";
 import MyButton from "../Components/Mybutton";
 import Clock from "../Components/Clock";
-import {getCity,getWeather} from "../Api/Index.tsx";
+import { getCity, getWeather } from "../Api/Index.tsx";
 import MyInput from "../Components/MyInput.tsx";
 
-class Tianqi extends React.Component<any,any> {
+class Tianqi extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props)
         this.state = {
-            cityInfo:'',
-            weatherInfos:'',
+            cityInfo: '',
+            weatherInfos: '',
         }
     }
 
-    btClick=()=>{
+    btClick = () => {
         console.log('aaaa');
-        
+
     }
 
     // getTianqi = async () => {
@@ -26,15 +26,15 @@ class Tianqi extends React.Component<any,any> {
     //         })
     // }
 
-    getPosition = async ()=>{
-        const  res:any = await getCity()
-        this.setState({cityInfo:res})
+    getPosition = async () => {
+        const res: any = await getCity()
+        this.setState({ cityInfo: res })
 
-        const weatherInfo:any = await getWeather(res.code)
-        this.setState({weatherInfos:weatherInfo.data.real.weather})
+        const weatherInfo: any = await getWeather(res.code)
+        this.setState({ weatherInfos: weatherInfo.data.real.weather })
     }
 
-    handleChange=(e:any)=>{
+    handleChange = (e: any) => {
         console.log(e.target.value)
     }
 
@@ -49,14 +49,14 @@ class Tianqi extends React.Component<any,any> {
         return (
             <>
                 <h3>天气情况</h3>
-                <h4>当前城市：{this.state.cityInfo.province}{this.state.cityInfo.city},< Clock/></h4>
+                <h4>当前城市：{this.state.cityInfo.province}{this.state.cityInfo.city},< Clock /></h4>
                 <h5>
                     当前天气:{this.state.weatherInfos.info},
                     当前温度:{this.state.weatherInfos.temperature},
                     相对湿度:{this.state.weatherInfos.humidity},
                 </h5>
                 <MyInput disabled={false} placeholder={'请输入要查询的城市'} value={''} inputChangeValue={this.handleChange} />
-                <MyButton types={"primary"} BtnClick = { this.btClick} BtnTtitle="天气"/>
+                <MyButton types={"primary"} BtnClick={this.btClick} BtnTtitle="天气" />
             </>
         )
     }

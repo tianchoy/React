@@ -1,18 +1,18 @@
-import React,{  ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-class Clock extends React.Component<any,any>{
+class Clock extends React.Component<any, any> {
     timerID: object | any;
-    constructor(props:any){
+    constructor(props: any) {
         super(props);
-        this.state={
+        this.state = {
             date: new Date()
         }
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.timerID = setInterval(
-            ()=> this.timer(),
+            () => this.timer(),
             1000
         )
     }
@@ -20,11 +20,11 @@ class Clock extends React.Component<any,any>{
         clearInterval(this.timerID)
     }
 
-    timer(){
-        this.setState({date: new Date()})
+    timer() {
+        this.setState({ date: new Date() })
     }
     render(): ReactNode {
-        return(
+        return (
             <>
                 <p>现在时间：{this.state.date.toLocaleTimeString()}</p>
             </>

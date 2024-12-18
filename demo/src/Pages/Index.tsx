@@ -1,12 +1,12 @@
 import { Component, ReactNode } from "react";
 import MyNav from "../Components/MyNav";
 
-class Home extends Component{
+class Home extends Component {
     render(): ReactNode {
-        return(
+        return (
             <>
                 <h1>this is Home</h1>
-                <MyNav/>
+                <MyNav />
             </>
         )
     }
