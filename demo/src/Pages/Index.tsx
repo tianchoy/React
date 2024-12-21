@@ -1,17 +1,20 @@
 import { Component, ReactNode } from "react";
 import MyNav from "../Components/MyNav";
-import Form from "../Components/Form";
+import MyForm from "../Components/MyForm";
 
 class Home extends Component {
     handleSubmit = (values: any) => {
-        console.log(values)
+        console.log('index:',values)
     }
+    onFinishFailed = (errorInfo: any) => {
+        console.log('index:', errorInfo);
+    };
     render(): ReactNode {
         return (
             <>
                 <h1>this is Home</h1>
                 <MyNav />
-                <Form onSubmit={this.handleSubmit}/>
+                <MyForm onFinish={this.handleSubmit} onFinishFailed={this.onFinishFailed} />
             </>
         )
     }

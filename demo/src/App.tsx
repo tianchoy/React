@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import MyName from './Components/first_com'
-import MyButton from "./Components/Mybutton";
+import MyButton from "./Components/MyButton";
 
 class App extends React.Component<any, any> {
   constructor(props: object) {

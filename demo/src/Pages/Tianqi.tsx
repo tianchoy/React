@@ -1,5 +1,5 @@
 import React from "react";
-import MyButton from "../Components/Mybutton";
+import MyButton from "../Components/MyButton.tsx";
 import Clock from "../Components/Clock";
 import { getCity, getWeather } from "../Api/Index.tsx";
 import MyInput from "../Components/MyInput.tsx";

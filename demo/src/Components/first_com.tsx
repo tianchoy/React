@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react";
-import MyButton from "./Mybutton";
+import MyButton from "./MyButton";
 interface FirProps {
     names: string,
     hits: string,
     tofather: Function
 }
-class MyName extends React.Component<FirProps> {
+class MyName extends React.Component<FirProps,any> {
     constructor(props: any) {
         super(props);
         this.state = {
