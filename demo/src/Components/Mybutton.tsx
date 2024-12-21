@@ -5,8 +5,8 @@ interface myBtnProps {
     BtnClick?: () => void;
     BtnTtitle: string;
     btnDisabled?: boolean;
-    types?: "link" | "text" | "default" | "primary" | "dashed";
-    htmlType: "button" | "submit" | "reset";
+    types: "link" | "text" | "default" | "primary" | "dashed";
+    htmlType?: "button" | "submit" | "reset";
 }
 
 class MyButton extends React.Component<myBtnProps> {
