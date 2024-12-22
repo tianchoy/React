@@ -3,10 +3,16 @@ import MyButton from "../Components/MyButton.tsx";
 import Clock from "../Components/Clock";
 import { getCity, getWeather } from "../Api/Index.tsx";
 import MyInput from "../Components/MyInput.tsx";
+import MyNav from "../Components/MyNav.tsx";
+
+type Props = {
+    cityInfo: string;
+    weatherInfos: string;
+};
 
 class Tianqi extends React.Component<any, any> {
 
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props)
         this.state = {
             cityInfo: '',
@@ -48,7 +54,8 @@ class Tianqi extends React.Component<any, any> {
     render(): React.ReactNode {
         return (
             <>
-                <h3>天气情况</h3>
+                <h1>weather's Info</h1>
+                <MyNav />
                 <h4>当前城市：{this.state.cityInfo.province}{this.state.cityInfo.city},< Clock /></h4>
                 <h5>
                     当前天气:{this.state.weatherInfos.info},

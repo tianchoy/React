@@ -8,12 +8,12 @@ type FieldType = {
   password?: string;
   remember?: string;
 };
+type StateType = {
+  names?: string;
+  psw?: string;
+}
 
-class MyForm extends React.Component<FormProps,
-  {
-    names?: string
-    psw?: string
-  }>
+class MyForm extends React.Component<FormProps,StateType>
 {
   constructor(props: FormProps) {
     super(props);

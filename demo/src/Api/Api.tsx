@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-// import {BASE_URL,TIMEOUT} from './Require.tsx'
+import config from './Require.tsx'
 
 const instance = axios.create({
-    baseURL: 'http://www.nmc.cn/rest/',
-    timeout: 5000,
+    baseURL: config.BASE_URL,
+    timeout: config.TIMEOUT,
     headers:{
         'Accept': 'application/json',
     }
@@ -21,7 +21,7 @@ instance.interceptors.request.use(
       return config;
     },
     (error: any) => {
-      // 对请求错误做些什么
+      // 编写对请求错误的处理逻辑
       return Promise.reject(error);
     }
   );
