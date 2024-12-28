@@ -54,20 +54,27 @@ class MyNav extends React.Component<any,any> {
     }
     
     onClick: MenuProps['onClick'] = (e) => {
+        console.log(e.key);
         this.setState({
             currents: e.key
         })
-        this.props.navigate(e.key);
+        console.log(window.location.pathname);
+        // this.props.navigate(e.key);
     };
+
+    navs = (e:any) => {
+        console.log(e);
+        this.props.navigate(e.key);
+    }
 
     render(): ReactNode {
         return (
             <Menu
                 onClick={this.onClick}
-                defaultSelectedKeys={this.state.currents}
-                defaultOpenKeys={['sub1']}
+                selectedKeys={[this.state.currents]}
                 mode="horizontal"
                 items={items}
+                onSelect={this.navs}
             />
         )
     }

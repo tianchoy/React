@@ -4,6 +4,7 @@ import Clock from "../Components/Clock";
 import { getCity, getWeather } from "../Api/Index.tsx";
 import MyInput from "../Components/MyInput.tsx";
 import MyNav from "../Components/MyNav.tsx";
+import Counts from "./Counts.tsx";
 
 type Props = {
     cityInfo: string;
@@ -56,6 +57,7 @@ class Tianqi extends React.Component<any, any> {
             <>
                 <h1>weather's Info</h1>
                 <MyNav />
+                <Counts />
                 <h4>当前城市：{this.state.cityInfo.province}{this.state.cityInfo.city},< Clock /></h4>
                 <h5>
                     当前天气:{this.state.weatherInfos.info},

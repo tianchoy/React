@@ -1,6 +1,7 @@
 import { Component, ReactNode } from "react";
 import MyNav from "../Components/MyNav";
 import MyForm from "../Components/MyForm";
+import Counts from "./Counts";
 
 class Home extends Component {
     handleSubmit = (values: any) => {
@@ -14,6 +15,7 @@ class Home extends Component {
             <>
                 <h1>this is Home</h1>
                 <MyNav />
+                <Counts />
                 <MyForm onFinish={this.handleSubmit} onFinishFailed={this.onFinishFailed} />
             </>
         )
