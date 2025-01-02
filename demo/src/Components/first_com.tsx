@@ -24,7 +24,7 @@ class MyName extends React.Component<FirProps,any> {
                 <h2>this is child</h2>
                 <div>{this.props.names}-{this.props.hits}</div>
                 <input type="text" onChange={this.getInput} />
-                <MyButton BtnClick={this.sendFather} BtnTtitle="toFather" />
+                <MyButton types="default" BtnClick={this.sendFather} BtnTtitle="toFather" />
             </>
         )
     }

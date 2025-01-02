@@ -1,14 +1,14 @@
-import React from 'react';
-import useCartStore  from '../../Store/CarStore';
-import MyButton from '../../Components/MyButton';
+import React from "react";
+import useCartStore from "../../Store/CarStore";
+import MyButton from "../../Components/MyButton";
 
 // 定义商品类型
 interface Item {
-    id: string;
-    name: string;
-    price: number;
-    quantity: number; // 新增数量字段
-  }
+  id: string;
+  name: string;
+  price: number;
+  quantity: number; // 新增数量字段
+}
 
 const Cart: React.FC = () => {
   const {
@@ -34,15 +34,27 @@ const Cart: React.FC = () => {
   return (
     <div>
       <h1>Shopping Cart</h1>
-      <MyButton types='primary' BtnTtitle='Add Item' BtnClick={handleAddItem} />
-      <MyButton types='primary' BtnTtitle='Clear Cart' BtnClick={clearCart} />
+      <MyButton types="primary" BtnTtitle="Add Item" BtnClick={handleAddItem} />
+      <MyButton types="primary" BtnTtitle="Clear Cart" BtnClick={clearCart} />
       <ul>
         {items.map((item) => (
           <li key={item.id}>
             {item.name} - ${item.price} x {item.quantity}
-            <MyButton types='primary' BtnTtitle='+' BtnClick={() => increaseQuantity(item.id)} />
-            <MyButton types='primary' BtnTtitle='-' BtnClick={() => decreaseQuantity(item.id)} />
-            <MyButton types='primary' BtnTtitle='Remove' BtnClick={() => removeItem(item.id)} />
+            <MyButton
+              types="primary"
+              BtnTtitle="+"
+              BtnClick={() => increaseQuantity(item.id)}
+            />
+            <MyButton
+              types="primary"
+              BtnTtitle="-"
+              BtnClick={() => decreaseQuantity(item.id)}
+            />
+            <MyButton
+              types="primary"
+              BtnTtitle="Remove"
+              BtnClick={() => removeItem(item.id)}
+            />
           </li>
         ))}
       </ul>
@@ -50,5 +62,4 @@ const Cart: React.FC = () => {
     </div>
   );
 };
-
 export default Cart;
