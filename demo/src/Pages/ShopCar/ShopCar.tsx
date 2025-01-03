@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import useCartStore from "../../Store/CarStore";
 import MyButton from "../../Components/MyButton";
 
@@ -18,7 +18,7 @@ interface CartState {
   totalPrice: number;
 }
 
-class Cart extends Component<CartProps, CartState> {
+class Cart extends React.Component<CartProps, CartState> {
   // 订阅 Zustand Store 的状态
   unsubscribe: () => void;
 
