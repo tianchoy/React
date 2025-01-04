@@ -1,38 +1,27 @@
-import React, { ReactNode } from "react";
+import React, { useEffect } from "react";
 import useStore from "../Store/Store";
 
-class Counts extends React.Component<any> {
-    state = {
-        count: useStore.getState().count,
-        increment: useStore.getState().increment,
-        decrement: useStore.getState().decrement,
-    };
+const Counts = () => {
+    const state = useStore();
+    const [count, setCount] = React.useState(state.count);
 
-    unsubscribe = null as any;
+    // Subscribe to store changes and update local state
+    useEffect(() => {
+        const unsubscribe = useStore.subscribe((newState) => {
+            setCount(newState.count);
+        });
 
-    componentDidMount() {
-       this.unsubscribe =  useStore.subscribe((state) => {
-            this.setState({
-                count: state.count,
-            })
-        })
-    }
-    componentWillUnmount() {
-        if(this.unsubscribe){
-            this.unsubscribe();
-        }
-        
-    }
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
+    }, []);
 
-    render(): ReactNode {
-        return (
-            <>
-                <h1>this is {this.state.count}</h1>
-                <button onClick={this.state.increment}>increment</button>
-                <button onClick={this.state.decrement}>decrement</button>
-            </>
-        )
-    }
-}
+    return (
+        <>
+            <h1>this is {count}</h1>
+            <button onClick={state.increment}>increment</button>
+            <button onClick={state.decrement}>decrement</button>
+        </>
+    );
+};
 
-export default Counts
+export default Counts;

@@ -7,21 +7,23 @@ import MyNav from "../Components/MyNav.tsx";
 import Counts from "./Counts.tsx";
 
 type Props = {
-    cityInfo: string;
-    weatherInfos: string;
+    province: string,
+    city: string,
+    info: string,
+    temperature: string,
+    humidity: string,
+    cityInfo: {};
+    weatherInfos: {};
 };
 
-class Tianqi extends React.Component<any, any> {
+const Tianqi = () => {
+    const [cityInfo, setCityInfo] = React.useState({} as Props)
+    const [weatherInfos, setWeatherInfos] = React.useState({} as Props)
+    React.useEffect(() => {
+        getPosition()
+    }, [])
 
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            cityInfo: '',
-            weatherInfos: '',
-        }
-    }
-
-    btClick = () => {
+    const btClick = () => {
         console.log('aaaa');
 
     }
@@ -33,42 +35,33 @@ class Tianqi extends React.Component<any, any> {
     //         })
     // }
 
-    getPosition = async () => {
+    const getPosition = async () => {
         const res: any = await getCity()
-        this.setState({ cityInfo: res })
+        setCityInfo(res )
 
         const weatherInfo: any = await getWeather(res.code)
-        this.setState({ weatherInfos: weatherInfo.data.real.weather })
+        setWeatherInfos( weatherInfo.data.real.weather )
     }
 
-    handleChange = (e: any) => {
+    const handleChange = (e: any) => {
         console.log(e.target.value)
     }
 
-
-
-    componentDidMount(): void {
-        // this.getTianqi()
-
-        this.getPosition();
-    }
-    render(): React.ReactNode {
-        return (
-            <>
-                <h1>weather's Info</h1>
-                <MyNav />
-                <Counts />
-                <h4>当前城市：{this.state.cityInfo.province}{this.state.cityInfo.city},< Clock /></h4>
-                <h5>
-                    当前天气:{this.state.weatherInfos.info},
-                    当前温度:{this.state.weatherInfos.temperature},
-                    相对湿度:{this.state.weatherInfos.humidity},
-                </h5>
-                <MyInput disabled={false} placeholder={'请输入要查询的城市'} value={''} inputChangeValue={this.handleChange} />
-                <MyButton types={"primary"} BtnClick={this.btClick} BtnTtitle="天气" />
-            </>
-        )
-    }
+    return (
+        <>
+            <h1>weather's Info</h1>
+            <MyNav />
+            <Counts />
+            <h4>当前城市：{cityInfo.province}{cityInfo.city},< Clock /></h4>
+            <h5>
+                当前天气:{weatherInfos.info},
+                当前温度:{weatherInfos.temperature},
+                相对湿度:{weatherInfos.humidity},
+            </h5>
+            <MyInput disabled={false} placeholder={'请输入要查询的城市'} value={''} inputChangeValue={handleChange} />
+            <MyButton types={"primary"} BtnClick={btClick} BtnTtitle="天气" />
+        </>
+    )
 }
 
 export default Tianqi
