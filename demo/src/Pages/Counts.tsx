@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useStore from "../Store/Store";
 
-const Counts = () => {
+const Counts:React.FC = () => {
     const state = useStore();
     const [count, setCount] = React.useState(state.count);
 

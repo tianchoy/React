@@ -16,7 +16,7 @@ type Props = {
     weatherInfos: {};
 };
 
-const Tianqi = () => {
+const Tianqi:React.FC = () => {
     const [cityInfo, setCityInfo] = React.useState({} as Props)
     const [weatherInfos, setWeatherInfos] = React.useState({} as Props)
     React.useEffect(() => {

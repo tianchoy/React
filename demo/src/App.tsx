@@ -44,7 +44,7 @@ class App extends React.Component<any, any> {
           <p>from child value :{this.state.childVal}</p>
         </div>
         <hr />
-        <MyButton ButtonClick={this.clicked} ButtoTtitle="appClick" />
+        <MyButton types='primary' BtnClick={this.clicked} BtnTtitle="appClick" />
       </>
     )
   }
