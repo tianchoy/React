@@ -11,9 +11,17 @@ const Home: React.FC = () => {
   const onFinishFailed = (errorInfo: any) => {
     console.log("index:", errorInfo);
   };
+
+  const test = <T,>(parms:T)=>{
+    console.log(parms)
+  }
+  const handClick = ()=>{
+    test(111)
+  }
   return (
     <>
       <h1>this is Home</h1>
+      <div className={`aa bb cc`} onClick={handClick}> test</div>
       <MyNav />
       <Counts />
       <hr />
